@@ -3,7 +3,7 @@ import { readFromJsonFile } from "./controler.js";
 
 
 export function insertTraining(Training) {
-  const check = checkDateTime(Training.coachId, Training.date, Training.time);
+  const check = checkDateTime(Training.trainerId, Training.date, Training.time);
   if (!check.ok) {
     return check;
   }
@@ -39,7 +39,7 @@ export function readById(id) {
 function checkDateTime(trainerId, date, time) {
   const data = readFromJsonFile("./db/trainings.json");
   const check = data.filter(
-    (e) => e.coachId == trainerId && e.date == date && e.time == time
+    (e) => e.trainerId == trainerId && e.date == date && e.time == time
   );
   if (check.length) {
     return { ok: false, message: "The training is booked on this date." };

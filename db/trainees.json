@@ -1,175 +1,32 @@
 [
   {
+    "name": "m",
+    "password": "$2b$10$FAV3XauDXeZ1U2XZWovaIum2kfh9aAb8U9l2rTjQ5CwtAMzRRMt32",
     "id": 1,
-    "name": "Noa Cohen",
-    "email": "noa.cohen@example.com",
     "profileImage": "/image.png"
   },
   {
+    "name": "v",
+    "password": "$2b$10$crp9z5wG0WWjPNMncJ4Q0.P/M.yBMVpyUQ18rsQ81R7kYkoLqDxYS",
     "id": 2,
-    "name": "Eli Levi",
-    "email": "eli.levi@example.com",
     "profileImage": "/image.png"
   },
   {
+    "name": "z",
+    "password": "$2b$10$cvQNnYJt7K.mH9tUR.NR0OHqgBQsJ4bqo9kfTfpXKn9JKaXZS2qu6",
     "id": 3,
-    "name": "Maya Shapiro",
-    "email": "maya.shapiro@example.com",
     "profileImage": "/image.png"
   },
   {
+    "name": "ז",
+    "password": "$2b$10$9jQwi2r1OzoPwFUJ3tRqVu3QX01iUpEiRm0FTjw9liVnTv47xRExC",
     "id": 4,
-    "name": "Avi Katz",
-    "email": "avi.katz@example.com",
     "profileImage": "/image.png"
   },
   {
+    "name": "ה",
+    "password": "$2b$10$bEoqWFio3q/xbdBklyLoxe3pWId/4f9dLMOxUmbCM3IUbHbiiISIq",
     "id": 5,
-    "name": "Dana Azulay",
-    "email": "dana.azulay@example.com",
-    "profileImage": "/image.png"
-  },
-  {
-    "id": 6,
-    "name": "Itai Ben-David",
-    "email": "itai.bendavid@example.com",
-    "profileImage": "/image.png"
-  },
-  {
-    "id": 7,
-    "name": "Shira Bar",
-    "email": "shira.bar@example.com",
-    "profileImage": "/image.png"
-  },
-  {
-    "id": 8,
-    "name": "Noam Peretz",
-    "email": "noam.peretz@example.com",
-    "profileImage": "/image.png"
-  },
-  {
-    "id": 9,
-    "name": "Lior Shahar",
-    "email": "lior.shahar@example.com",
-    "profileImage": "/image.png"
-  },
-  {
-    "id": 10,
-    "name": "Tamar Kaplan",
-    "email": "tamar.kaplan@example.com",
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "Maya Shapiro",
-    "email": "maya@example.com",
-    "trainingDuration": 3,
-    "id": 12,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "1",
-    "email": "moshik0527669169@gmail.com",
-    "id": 13,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "2",
-    "email": "moshik0527669169@gmail.com",
-    "id": 14,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "moshik",
-    "email": "moshik0527669169@gmail.com",
-    "id": 15,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "KodPlay",
-    "email": "moshik0527669169@gmail.com",
-    "id": 16,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "KodPlay",
-    "email": "moshik0527669169@gmail.com",
-    "id": 17,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "riddle_project_2.",
-    "email": "moshik0527669169@gmail.com",
-    "id": 18,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "riddle_project_2.",
-    "email": "moshik0527669169@gmail.com",
-    "id": 19,
-    "profileImage": "/image.png"
-  },
-  {
-    "email": "moshik0527669169@gmail.com",
-    "id": 20,
-    "profileImage": "/image.png"
-  },
-  {
-    "email": "moshik0527669169@gmail.com",
-    "id": 21,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "KodPlay",
-    "email": "moshik0527669169@gmail.com",
-    "id": 22,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "a",
-    "email": "moshik0527669169@gmail.com",
-    "id": 23,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "מני",
-    "email": "moshik0527669169@gmail.com",
-    "id": 24,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "1",
-    "email": "moshik0527669169@gmail.com",
-    "id": 25,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "nscnk",
-    "email": "moshik0527669169@gmail.com",
-    "id": 26,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "הה",
-    "email": "moshik0527669169@gmail.com",
-    "id": 27,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "xx",
-    "email": "moshik0527669169@gmail.com",
-    "id": 28,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "3",
-    "email": "moshik0527669169@gmail.com",
-    "id": 29,
-    "profileImage": "/image.png"
-  },
-  {
-    "name": "ml;vmdl;vmdsw;l",
-    "email": "moshik0527669169@gmail.com",
-    "id": 30,
     "profileImage": "/image.png"
   }
 ]
