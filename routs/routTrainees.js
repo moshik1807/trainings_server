@@ -1,23 +1,30 @@
 import express from "express";
-import { readTrainees, insertTrainees, login } from "../serviseTrainees.js";
+
+import { auth } from "../authService.js";
+import { insertTrainees, login,getUserById } from "../serviseTrainees.js";
 
 const routTrainees = express.Router();
 
-routTrainees.get("/readAll", (req, res) => {
+routTrainees.get("/readById", auth, (req, res) => {
   try {
-    const trainees = readTrainees();
-    res.status(200).json(trainees);
+    const id = req.user.id;
+    const trainees = getUserById(id);
+    const user = trainees.find((t) => t.id === id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "error" });
   }
 });
 
-routTrainees.post("/login", (req, res) => {
+routTrainees.post("/login", async (req, res) => {
   try {
-    const user = login(req.body); 
+    const user = await login(req.body);
     if (user) {
-      res.status(200).json(user);
+      return res.status(200).json(user);
     } else {
       res.status(401).json({ message: "User not found" });
     }
@@ -27,11 +34,11 @@ routTrainees.post("/login", (req, res) => {
   }
 });
 
-routTrainees.post("/signup", (req, res) => {
+routTrainees.post("/signup", async (req, res) => {
   try {
-    const user = insertTrainees(req.body);
-    if(!user){
-      res.status(409).json({ message: "User already exists" });
+    const user = await insertTrainees(req.body);
+    if (!user) {
+      return res.status(409).json({ message: "User already exists" });
     }
     res.status(201).json(user);
   } catch (error) {
@@ -41,8 +48,3 @@ routTrainees.post("/signup", (req, res) => {
 });
 
 export default routTrainees;
-
-
-
-
-
