@@ -8,7 +8,7 @@ export function insertTraining(Training) {
     return check;
   }
   const data = readFromJsonFile("./db/trainings.json");
-  Training.id = data[data.length - 1].id + 1;
+  Training.id = data.length > 0 ? data[data.length - 1].id + 1 : 1;
   data.push(Training);
   writeToJsonFile("./db/trainings.json", data);  
   return { ok: true, data: Training };

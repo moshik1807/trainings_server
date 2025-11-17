@@ -1,15 +1,14 @@
 import express from "express";
 
 import { auth } from "../authService.js";
-import { insertTrainees, login,getUserById } from "../serviseTrainees.js";
+import { insertTrainees, login, getUserById } from "../serviseTrainees.js";
 
 const routTrainees = express.Router();
 
 routTrainees.get("/readById", auth, (req, res) => {
   try {
     const id = req.user.id;
-    const trainees = getUserById(id);
-    const user = trainees.find((t) => t.id === id);
+    const user = getUserById(id);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

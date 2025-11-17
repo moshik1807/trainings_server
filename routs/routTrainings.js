@@ -1,5 +1,5 @@
 import express from "express"
-import { insertTraining,deleteTraining,readById} from "../serviceTrainings.js"
+import { insertTraining, deleteTraining, readById } from "../serviceTrainings.js"
 const routTrainings = express.Router()
 
 routTrainings.get("/readById/:id", (req, res) => {
@@ -9,31 +9,31 @@ routTrainings.get("/readById/:id", (req, res) => {
         res.status(200).json(trainings);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "ettor" });
+        res.status(500).json({ message: "error" });
     }
 })
 
-routTrainings.post("/insert",(req, res)=>{
-    try{
+routTrainings.post("/insert", (req, res) => {
+    try {
         const result = insertTraining(req.body)
-        if(!result.ok){
-            return res.status(400).json({message:result.message})
+        if (!result.ok) {
+            return res.status(400).json({ message: result.message })
         }
         res.status(200).json(result);
-    }catch(error){
+    } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "ettor" }); 
+        res.status(500).json({ message: "error" }); 
     }
 })
 
-routTrainings.delete("/delete/:trainingId/:userId",(req, res)=>{
-    try{
-        const {trainingId,userId} = req.params
-        const trainings = deleteTraining(trainingId,userId)
+routTrainings.delete("/delete/:trainingId/:userId", (req, res) => {
+    try {
+        const { trainingId, userId } = req.params
+        const trainings = deleteTraining(trainingId, userId)
         res.status(200).json(trainings);
-    }catch(error){
+    } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "ettor" }); 
+        res.status(500).json({ message: "error" }); 
     }
 })
 

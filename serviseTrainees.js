@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 
-import { createToken, TokenDecoding } from "./authService.js";
+import { createToken } from "./authService.js";
 import { writeToJsonFile } from "./controler.js";
 import { readFromJsonFile } from "./controler.js";
 
@@ -40,6 +39,5 @@ export async function login(Trainees) {
 
 export function getUserById(id) {
     const data = readFromJsonFile("./db/trainees.json");
-    const Traine =  data.find(t => t.id === id)
-    return Traine;
+    return data.find(t => t.id === id);
 }
