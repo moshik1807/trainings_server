@@ -1,71 +1,57 @@
-import { writeToJsonFile } from "./controler.js";
-import { readFromJsonFile } from "./controler.js";
+import { writeToJsonFile, readFromJsonFile } from "./controler.js";
 
+export function insertTraining(training) {
+  const dateTime = new Date(training.dateTime);
 
-export function insertTraining(Training) {
-  const check = checkDateTime(Training.trainerId, Training.date, Training.time);
-  if (!check.ok) {
-    return check;
-  }
   const data = readFromJsonFile("./db/trainings.json");
-  Training.id = data.length > 0 ? data[data.length - 1].id + 1 : 1;
-  data.push(Training);
-  writeToJsonFile("./db/trainings.json", data);  
-  return { ok: true, data: Training };
-}
-
-
-export function deleteTraining(trainingId, userId) {
-  const data = readFromJsonFile("./db/trainings.json");
-  let updatedData = data.filter(
-    (training) => training.id !== parseInt(trainingId)
+  const exists = data.find(
+    (t) =>
+      t.trainerId === training.trainerId &&
+      new Date(t.dateTime).getTime() === dateTime.getTime()
   );
-  writeToJsonFile("./db/trainings.json", updatedData);
-  return trainingId
-}
 
-
-export function readById(id) {
-  const data = readFromJsonFile("./db/trainings.json");
-  let newData = data.filter((item) => {
-    return item.traineeId === parseInt(id);
-  });
-  newData = filterPassedDate(newData);  
-  newData = SortByDate(newData);
-  return newData;
-}
-
-
-function checkDateTime(trainerId, date, time) {
-  const data = readFromJsonFile("./db/trainings.json");
-  const check = data.filter(
-    (e) => e.trainerId == trainerId && e.date == date && e.time == time
-  );
-  if (check.length) {
+  if (exists) {
     return { ok: false, message: "The training is booked on this date." };
   }
-  const selectedDateTime = new Date(`${date}T${time}`);
+
   const now = new Date();
-  if (selectedDateTime < now) {
+  if (dateTime < now) {
     return { ok: false, message: "This date has passed." };
   }
-  const hour = selectedDateTime.getHours();
+
+  const hour = dateTime.getHours();
   if (hour < 9 || hour >= 21) {
     return { ok: false, message: "You can schedule from 9 am to 9 pm." };
   }
-  return { ok: true };
+
+  training.id = data.length > 0 ? data[data.length - 1].id + 1 : 1;
+  data.push(training);
+  writeToJsonFile("./db/trainings.json", data);
+
+  return { ok: true, data: training };
 }
 
+export function deleteTraining(trainingId) {
+  const data = readFromJsonFile("./db/trainings.json");
+  const updatedData = data.filter((t) => t.id !== parseInt(trainingId));
+  writeToJsonFile("./db/trainings.json", updatedData);
+  return trainingId;
+}
 
-function SortByDate(trainings) {
-  trainings.sort(
-    (a, b) => new Date(`${a.date}T${a.time}`) - new Date(`${b.date}T${b.time}`)
-  );
+export function readById(traineeId) {
+  const data = readFromJsonFile("./db/trainings.json");
+  let newData = data.filter((t) => t.traineeId === parseInt(traineeId));
+  newData = filterPassedDate(newData);
+  newData = sortByDate(newData);
+  return newData;
+}
+
+function sortByDate(trainings) {
+  trainings.sort((a, b) => new Date(a.dateTime) - new Date(b.dateTime));
   return trainings;
 }
 
-
 function filterPassedDate(trainings) {
-  const dateTime = new Date();
-  return trainings.filter((e) => new Date(`${e.date}T${e.time}`) > dateTime);
+  const now = new Date();
+  return trainings.filter((t) => new Date(t.dateTime) > now);
 }
